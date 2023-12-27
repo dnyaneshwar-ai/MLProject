@@ -118,3 +118,5 @@ class ModelTrainer:
         except Exception as e:
             # Raise a custom exception in case of an error
             raise CustomException(e, sys)
+
+
