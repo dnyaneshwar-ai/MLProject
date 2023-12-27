@@ -1,4 +1,4 @@
-# whiver folder has __init__.py file, automatically that folder will found as package by find_package() module ex, src
+# whichever folder has __init__.py file, automatically that folder will found as package by find_package() module ex, src
 
 from setuptools import setup, find_packages
 
