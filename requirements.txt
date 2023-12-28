@@ -7,6 +7,6 @@ catboost
 xgboost
 Flask
 datetime
-
+pickle
 
 -e .
