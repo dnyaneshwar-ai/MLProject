@@ -10,30 +10,25 @@ class PredictPipeline:
 
     def predict(self, features):
         try:
-            # Use __file__ to get the current script's directory
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            
-            model_path = os.path.join(script_directory, "artifacts", "model.pkl")
-            preprocessor_path = os.path.join(script_directory, "artifacts", "preprocessor.pkl")
-            
+            model_path = os.path.join("artifacts", "model.pkl")
+            preprocessor_path = os.path.join('artifacts', 'preprocessor.pkl')
+
+            if not os.path.exists(model_path):
+                raise FileNotFoundError(f"Model file not found: {model_path}")
+            if not os.path.exists(preprocessor_path):
+                raise FileNotFoundError(f"Preprocessor file not found: {preprocessor_path}")
+
             print("Before Loading")
-            
-            if not os.path.exists(model_path) or not os.path.exists(preprocessor_path):
-                raise FileNotFoundError("Model or preprocessor file not found.")
-            
             model = load_object(file_path=model_path)
             preprocessor = load_object(file_path=preprocessor_path)
-            
             print("After Loading")
-            
+
             data_scaled = preprocessor.transform(features)
             preds = model.predict(data_scaled)
             return preds
-
-        except FileNotFoundError as e:
-            raise CustomException(f"File not found: {e.filename}", sys)
         except Exception as e:
             raise CustomException(e, sys)
+
 
 class CustomData:
     def __init__(self,

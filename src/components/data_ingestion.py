@@ -21,7 +21,7 @@ class DataIngestionConfig:
 # Define a class for data ingestion
 class DataIngestion:
     def __init__(self):
-        # Initialize an instance of the DataIngestionConfig class
+        # ingestion_config can acces all variables from dataingestionconfig
         self.ingestion_config = DataIngestionConfig()
 
     # Define a method to initiate the data ingestion process
